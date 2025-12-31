@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Year Gift ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #000;
+    overflow: hidden;
+}
+.slide {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+.active { display: block; }
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: hotpink;
+    color: white;
+    font-size: 16px;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    border-radius: 25px;
+    padding: 25px;
+    margin-top: 30px;
+    animation: pop 1s;
+}
+
+@keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+@keyframes float {
+    from { bottom: -10%; opacity: 1; }
+    to { bottom: 110%; opacity: 0; }
+}
+
+.kiss {
+    font-size: 40px;
+    animation: kiss 1s infinite;
+}
+@keyframes kiss {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+.teddy { font-size: 70px; }
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+    <h1>🎆 Happy New Year My Love ❤️</h1>
+    <div class="card">
+        🎁💝  
+        <p>Touch this gift to read my wish ✨</p>
+        <button onclick="next()">Open Gift</button>
+    </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+    <h2>🧸 About YOU 🧸</h2>
+    <div class="card">
+        <div class="teddy">🧸</div>
+        <p>
+            Tum caring ho ❤️<br>
+            thode gusse wale 😤<br>
+            bahut cute ho 🥹<br>
+            aur mere liye sab kuch ho 💕<br><br>
+            Tum meri safe place ho 🫂
+        </p>
+        <button onclick="next()">Next</button>
+    </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+    <h2>💋 Virtual Kiss 💋</h2>
+    <div class="card">
+        <p>Touch the box 😘</p>
+        <button onclick="kiss()">Open Kiss Box</button>
+        <div id="kissArea"></div>
+    </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+    <h2>❤️ Our Fights & Love ❤️</h2>
+    <div class="card">
+        <p>
+            Haan hum ladte hain 💔<br>
+            block, chillana, call cut 😔<br>
+            par pyaar phir bhi wahi rehta hai ❤️‍🩹<br><br>
+            Gussa bhi tumse,<br>
+            pyaar bhi tumse ♾️
+        </p>
+        <button onclick="next()">Next</button>
+    </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+    <h2>🎀 Our Memories 🎀</h2>
+    <div class="card">
+        😂❤️🥰  
+        <p>
+            Hansi, mazaak, care 💕<br>
+            pagalpan aur pyaar 🫶<br>
+            Tumhare saath har moment special ✨
+        </p>
+        <button onclick="next()">Next</button>
+    </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+    <h1>❤️ I LOVE YOU ❤️</h1>
+    <div class="card">
+        <p>
+            Baby 💕 Jaan 💋  
+            Shona 🥹 Cutie 🧿  
+            Mere dil ❤️ meri duniya 🌍<br><br>
+            Always yours ♾️
+        </p>
+    </div>
+</div>
+
+<!-- QR CODE -->
+<div style="position:fixed; bottom:10px; right:10px; background:white; padding:10px; border-radius:10px;">
+    <img id="qr">
+    <p style="color:black;font-size:12px">Scan me 💝</p>
+</div>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let i = 0;
+
+function next(){
+    slides[i].classList.remove('active');
+    i++;
+    slides[i].classList.add('active');
+}
+
+function kiss(){
+    let area = document.getElementById('kissArea');
+    area.innerHTML = '<div class="kiss">💋 MUAHHHH 💋</div>';
+    setTimeout(next,1500);
+}
+
+// floating hearts
+setInterval(()=>{
+    let h = document.createElement('div');
+    h.className = 'heart';
+    h.innerHTML = '❤️';
+    h.style.left = Math.random()*100 + 'vw';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+},500);
+
+// QR Code (replace YOUR_LINK_HERE)
+document.getElementById("qr").src =
+"https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=YOUR_LINK_HERE";
+</script>
+
+</body>
+</html>
